@@ -1,4 +1,4 @@
-package com.example.profilealbumviewer
+package com.example.profilealbumviewer.ui.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

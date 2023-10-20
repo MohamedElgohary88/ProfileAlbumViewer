@@ -11,9 +11,11 @@ import com.example.profilealbumviewer.utils.ServerException
 import retrofit2.Response
 import java.io.IOException
 import java.net.UnknownHostException
+import javax.inject.Inject
 
-class UserDataRepositoryImplementation(private val dataSource: RemoteDataSource) :
-    UserDataRepository {
+class UserDataRepositoryImplementation @Inject constructor(
+    private val dataSource: RemoteDataSource
+) : UserDataRepository {
     override suspend fun getUserData(userId: Int): UserResponse {
         return wrapApiCall { dataSource.getUserData(userId) }
     }
