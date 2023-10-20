@@ -8,10 +8,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.profilealbumviewer.ui.screens.Screen
 
-fun NavGraphBuilder.photosRoute() {
-
-}
-
 fun NavController.navigateToPhotosScreen(id: Int) {
     navigate("${Screen.Photos.route}/$id")
 }

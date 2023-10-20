@@ -10,4 +10,6 @@ interface UserDataRepository {
     suspend fun getUserAlbums(userId: Int): List<AlbumDto>
 
     suspend fun getAlbumPhotos(albumId: Int): List<PhotoDto>
+
+    suspend fun getPhoto(photoId: Int): PhotoDto
 }

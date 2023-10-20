@@ -17,7 +17,6 @@ class PhotosViewModel @Inject constructor(
 
     private val albumArgs: AlbumArgs = AlbumArgs(savedStateHandle)
 
-
     init {
         getAllPhotos()
     }
@@ -43,10 +42,21 @@ class PhotosViewModel @Inject constructor(
             it.copy(
                 isLoading = false,
                 error = null,
-                photos = photos.map { photo -> photo.toPhotoDetails() }
+                photos = photos.map { photo -> photo.toPhotoDetails() },
+                originalPhotos = photos.map { photo -> photo.toPhotoDetails() }
             )
         }
     }
+
+    override fun filterPhotos(query: String) {
+        val filteredPhotos = if (query.isEmpty()) {
+            _state.value.originalPhotos
+        } else {
+            _state.value.photos.filter { it.title.contains(query, ignoreCase = true) }
+        }
+        _state.update { it.copy(searchQuery = query, photos = filteredPhotos) }
+    }
+
 
     override fun onClickPhoto(photoId: Int) {
         sendEffect(PhotosUiEffect.NavigateToPhotoViewer(photoId))

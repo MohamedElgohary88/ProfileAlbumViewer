@@ -28,6 +28,10 @@ class UserDataRepositoryImplementation @Inject constructor(
         return wrapApiCall { dataSource.getAlbumPhotos(albumId) }
     }
 
+    override suspend fun getPhoto(photoId: Int): PhotoDto {
+        return wrapApiCall { dataSource.getPhoto(photoId) }
+    }
+
     private suspend fun <T> wrapApiCall(function: suspend () -> Response<T>): T {
         try {
             val response = function()

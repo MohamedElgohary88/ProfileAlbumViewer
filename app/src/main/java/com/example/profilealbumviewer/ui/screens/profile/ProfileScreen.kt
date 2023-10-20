@@ -34,7 +34,6 @@ fun ProfileScreen(
                 navController.navigateToPhotosScreen(effect.albumId)
             }
         }
-
     }
 
     ProfileContent(state = state, listener = viewModel)

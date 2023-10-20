@@ -4,8 +4,10 @@ import com.example.profilealbumviewer.model.PhotoDto
 import com.example.profilealbumviewer.viewmodels.base.BaseUIState
 
 data class PhotosUiState(
+    val searchQuery: String = "",
     val albumId: Int = 0,
     val photos: List<PhotoDetails> = emptyList(),
+    val originalPhotos: List<PhotoDetails> = emptyList(),
     val isLoading: Boolean = false,
     val isError: Boolean = false,
     val error: String? = null,

@@ -102,4 +102,7 @@ dependencies {
 
     //coil
     implementation("io.coil-kt:coil-compose:2.4.0")
+
+    // zoomable
+    implementation("net.engawapg.lib:zoomable:1.5.1")
 }

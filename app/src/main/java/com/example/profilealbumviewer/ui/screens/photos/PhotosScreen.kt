@@ -1,7 +1,5 @@
 package com.example.profilealbumviewer.ui.screens.photos
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -18,6 +16,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -31,13 +32,16 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.profilealbumviewer.R
 import com.example.profilealbumviewer.ui.screens.composable.CommonTextField
+import com.example.profilealbumviewer.ui.screens.photo_viewer.navigateToPhotoViewer
 import com.example.profilealbumviewer.ui.theme.Dimens
 import com.example.profilealbumviewer.ui.theme.LightOrange
 import com.example.profilealbumviewer.utils.CollectUiEffect
 import com.example.profilealbumviewer.viewmodels.photos.PhotoDetails
 import com.example.profilealbumviewer.viewmodels.photos.PhotosInteractionListener
+import com.example.profilealbumviewer.viewmodels.photos.PhotosUiEffect
 import com.example.profilealbumviewer.viewmodels.photos.PhotosUiState
 import com.example.profilealbumviewer.viewmodels.photos.PhotosViewModel
+import com.example.profilealbumviewer.viewmodels.user.UserUiEffect
 
 @Composable
 fun PhotosScreen(
@@ -48,7 +52,9 @@ fun PhotosScreen(
 
     CollectUiEffect(viewModel.effect) { effect ->
         when (effect) {
-
+            is PhotosUiEffect.NavigateToPhotoViewer -> {
+                navController.navigateToPhotoViewer(effect.photoId)
+            }
         }
     }
 
@@ -63,6 +69,8 @@ fun PhotosContent(
     state: PhotosUiState,
     listener: PhotosInteractionListener
 ) {
+    var query by remember { mutableStateOf(state.searchQuery) }
+
     Column(modifier = Modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
@@ -74,13 +82,22 @@ fun PhotosContent(
                 )
                 .border(1.dp, LightOrange, shape = RoundedCornerShape(Dimens().Radius8))
         ) {
-            CommonTextField(value = "", onValueChange = {}, hint = "Search", leadingIcon = {
-                Icon(
-                    painter = painterResource(id = R.drawable.magnifer),
-                    contentDescription = null
-                )
-            })
+            CommonTextField(
+                value = query,
+                onValueChange = { newQuery ->
+                    query = newQuery
+                    listener.filterPhotos(newQuery)
+                },
+                hint = "Search",
+                leadingIcon = {
+                    Icon(
+                        painter = painterResource(id = R.drawable.magnifer),
+                        contentDescription = null
+                    )
+                }
+            )
         }
+
         LazyVerticalGrid(
             columns = GridCells.Fixed(3),
             contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
@@ -92,6 +109,7 @@ fun PhotosContent(
         }
     }
 }
+
 
 @Composable
 fun PhotoItem(

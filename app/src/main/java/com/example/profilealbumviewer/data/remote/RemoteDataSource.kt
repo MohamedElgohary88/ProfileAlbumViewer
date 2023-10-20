@@ -16,4 +16,8 @@ interface RemoteDataSource {
 
     @GET("albums/{albumId}/photos")
     suspend fun getAlbumPhotos(@Path("albumId") albumId: Int): Response<List<PhotoDto>>
+
+    @GET("photos/{photoId}")
+    suspend fun getPhoto(@Path("photoId") photoId: Int): Response<PhotoDto>
+
 }
