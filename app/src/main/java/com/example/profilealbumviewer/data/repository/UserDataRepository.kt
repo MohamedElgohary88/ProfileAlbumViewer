@@ -4,7 +4,7 @@ import com.example.profilealbumviewer.model.AlbumResponse
 import com.example.profilealbumviewer.model.PhotoResponse
 import com.example.profilealbumviewer.model.UserResponse
 
-interface ProfileDataRepository {
+interface UserDataRepository {
     suspend fun getUserData(userId: Int): UserResponse
 
     suspend fun getUserAlbums(userId: Int): List<AlbumResponse>
