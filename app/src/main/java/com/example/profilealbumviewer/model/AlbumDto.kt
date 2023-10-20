@@ -1,6 +1,6 @@
 package com.example.profilealbumviewer.model
 
-data class AlbumResponse(
+data class AlbumDto(
     val userId: Int,
     val id: Int,
     val title: String

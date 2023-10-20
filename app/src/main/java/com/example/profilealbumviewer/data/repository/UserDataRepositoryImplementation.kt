@@ -1,9 +1,9 @@
 package com.example.profilealbumviewer.data.repository
 
 import com.example.profilealbumviewer.data.remote.RemoteDataSource
-import com.example.profilealbumviewer.model.AlbumResponse
-import com.example.profilealbumviewer.model.PhotoResponse
-import com.example.profilealbumviewer.model.UserResponse
+import com.example.profilealbumviewer.model.AlbumDto
+import com.example.profilealbumviewer.model.PhotoDto
+import com.example.profilealbumviewer.model.UserDto
 import com.example.profilealbumviewer.utils.NoInternetException
 import com.example.profilealbumviewer.utils.NotFoundException
 import com.example.profilealbumviewer.utils.NullResultException
@@ -16,15 +16,15 @@ import javax.inject.Inject
 class UserDataRepositoryImplementation @Inject constructor(
     private val dataSource: RemoteDataSource
 ) : UserDataRepository {
-    override suspend fun getUserData(userId: Int): UserResponse {
+    override suspend fun getUserData(userId: Int): UserDto {
         return wrapApiCall { dataSource.getUserData(userId) }
     }
 
-    override suspend fun getUserAlbums(userId: Int): List<AlbumResponse> {
+    override suspend fun getUserAlbums(userId: Int): List<AlbumDto> {
         return wrapApiCall { dataSource.getUserAlbums(userId) }
     }
 
-    override suspend fun getAlbumPhotos(albumId: Int): List<PhotoResponse> {
+    override suspend fun getAlbumPhotos(albumId: Int): List<PhotoDto> {
         return wrapApiCall { dataSource.getAlbumPhotos(albumId) }
     }
 
