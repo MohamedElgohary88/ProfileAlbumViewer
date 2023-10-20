@@ -5,7 +5,7 @@ import com.example.profilealbumviewer.model.UserDto
 import com.example.profilealbumviewer.viewmodels.base.BaseUIState
 
 data class UserUiState(
-    val userId: Int = 1,
+    val userId: Int = (1..10).random(),
     val userName: String = "",
     val city: String = "",
     val street: String = "",

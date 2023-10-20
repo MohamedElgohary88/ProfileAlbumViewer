@@ -4,7 +4,7 @@ import com.example.profilealbumviewer.model.PhotoDto
 import com.example.profilealbumviewer.viewmodels.base.BaseUIState
 
 data class PhotosUiState(
-    val albumId: Int = 1,
+    val albumId: Int = 0,
     val photos: List<PhotoDetails> = emptyList(),
     val isLoading: Boolean = false,
     val isError: Boolean = false,

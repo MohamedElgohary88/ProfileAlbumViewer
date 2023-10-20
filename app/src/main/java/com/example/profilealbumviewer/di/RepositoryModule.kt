@@ -15,7 +15,7 @@ abstract class RepositoryModule {
     @Singleton
     @Binds
     abstract fun bindProductsRepository(
-        productsRepositoryImpl: UserDataRepositoryImplementation
+        userRepositoryImpl: UserDataRepositoryImplementation
     ): UserDataRepository
 
 }

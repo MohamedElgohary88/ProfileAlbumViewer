@@ -6,11 +6,12 @@ import com.example.profilealbumviewer.model.UserDto
 import com.example.profilealbumviewer.viewmodels.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update
+import java.util.Random
 import javax.inject.Inject
 
 @HiltViewModel
 class UserViewModel @Inject constructor(
-    private val repository: UserDataRepository
+    private val repository: UserDataRepository,
 ) : BaseViewModel<UserUiState, UserUiEffect>(UserUiState()), UserInteractionListener {
 
     init {
