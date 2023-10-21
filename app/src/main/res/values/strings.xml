@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">ProfileAlbumViewer</string>
+    <string name="address">Address</string>
+    <string name="my_albums">My Albums</string>
+    <string name="city">City: %1$s</string>
+    <string name="street">Street: %1$s</string>
+    <string name="suite">Suite: %1$s</string>
+    <string name="search_in_photos">Search in photos</string>
+    <string name="the_search_result_is_empty">The search result is empty!!</string>
 </resources>

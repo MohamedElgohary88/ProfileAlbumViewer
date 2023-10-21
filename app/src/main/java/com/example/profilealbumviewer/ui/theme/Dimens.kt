@@ -20,6 +20,7 @@ data class Dimens(
     val TextSize12: TextUnit = 12.sp,
     val TextSize14: TextUnit = 14.sp,
     val TextSize16: TextUnit = 16.sp,
+    val TextSize18: TextUnit = 18.sp,
     val TextSize22: TextUnit = 22.sp,
     val TextSize24: TextUnit = 24.sp,
     //endregion
@@ -39,6 +40,8 @@ data class Dimens(
 
     // region Icon Size
     val IconSize24: Dp = 24.dp,
+    val lottieLoading: Dp = 240.dp,
+    val imageSize: Dp = 132.dp
     //endregion
 
 )

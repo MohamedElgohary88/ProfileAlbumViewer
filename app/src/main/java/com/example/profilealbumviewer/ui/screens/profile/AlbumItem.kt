@@ -10,6 +10,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.profilealbumviewer.ui.theme.Black60
+import com.example.profilealbumviewer.ui.theme.Dimens
+import com.example.profilealbumviewer.ui.theme.OnSecondary
+import com.example.profilealbumviewer.ui.theme.Typography
 import com.example.profilealbumviewer.viewmodels.user.AlbumUiState
 
 @Composable
@@ -20,14 +24,18 @@ fun AlbumItem(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp)
+            .padding(Dimens().SpacingXMedium)
             .clickable { onClickItem(albumUiState.id) }
     ) {
-        Text(text = albumUiState.title)
+        Text(
+            text = albumUiState.title,
+            color = Black60,
+            style = Typography.bodyMedium
+        )
         Divider(
-            color = Color.Gray,
+            color = OnSecondary,
             thickness = 1.dp,
-            modifier = Modifier.padding(vertical = 8.dp)
+            modifier = Modifier.padding(vertical = Dimens().SpacingXMedium)
         )
     }
 }

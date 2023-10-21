@@ -37,3 +37,5 @@ fun AlbumDto.toAlbumUiState(): AlbumUiState {
         title = title
     )
 }
+
+fun UserUiState.contentScreen() = !this.isError && this.albums.isNotEmpty()

@@ -3,6 +3,7 @@ package com.example.profilealbumviewer.viewmodels.viewer
 import com.example.profilealbumviewer.model.PhotoDto
 import com.example.profilealbumviewer.viewmodels.base.BaseUIState
 import com.example.profilealbumviewer.viewmodels.photos.PhotoDetails
+import com.example.profilealbumviewer.viewmodels.photos.PhotosUiState
 
 data class ViewerUiState(
     val id: Int = 0,
@@ -20,3 +21,5 @@ fun PhotoDto.toViewerUiState(): ViewerUiState {
         url = url
     )
 }
+
+fun ViewerUiState.contentScreen() = !this.isError && this.url.isNotEmpty()

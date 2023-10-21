@@ -28,3 +28,5 @@ fun PhotoDto.toPhotoDetails(): PhotoDetails {
         url = url
     )
 }
+
+fun PhotosUiState.contentScreen() = !this.isError && this.photos.isNotEmpty()

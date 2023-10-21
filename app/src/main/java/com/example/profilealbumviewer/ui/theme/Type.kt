@@ -15,13 +15,13 @@ val Typography = Typography(
     titleLarge = TextStyle(
         fontFamily = Jakarta,
         fontWeight = FontWeight.SemiBold,
-        fontSize = Dimens().TextSize22,
+        fontSize = Dimens().TextSize18,
         lineHeight = Dimens().TextHeight28
     ),
 
     titleMedium = TextStyle(
         fontFamily = Jakarta,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.Medium,
         fontSize = Dimens().TextSize16,
         lineHeight = Dimens().TextHeight24
     ),
@@ -43,7 +43,7 @@ val Typography = Typography(
     bodyMedium = TextStyle(
         fontFamily = Jakarta,
         fontWeight = FontWeight.Normal,
-        fontSize = Dimens().TextSize14,
+        fontSize = Dimens().TextSize16,
         lineHeight = Dimens().TextHeight20
     ),
 
