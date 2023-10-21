@@ -36,6 +36,7 @@ import com.example.profilealbumviewer.ui.screens.composable.CommonTextField
 import com.example.profilealbumviewer.ui.screens.composable.ContentVisibility
 import com.example.profilealbumviewer.ui.screens.composable.EmptyPlaceholder
 import com.example.profilealbumviewer.ui.screens.composable.Loading
+import com.example.profilealbumviewer.ui.screens.composable.NoInternet
 import com.example.profilealbumviewer.ui.screens.photo_viewer.navigateToPhotoViewer
 import com.example.profilealbumviewer.ui.theme.Background
 import com.example.profilealbumviewer.ui.theme.Dimens
@@ -75,7 +76,7 @@ fun PhotosContent(
     var query by remember { mutableStateOf(state.searchQuery) }
 
     Loading(state = state.isLoading && state.photos.isEmpty())
-
+    NoInternet(state = state.isError,listener::getAllPhotos)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -106,7 +107,7 @@ fun PhotosContent(
             )
         }
         EmptyPlaceholder(
-            state = !state.isLoading && state.photos.isEmpty(),
+            state = !state.isLoading && state.photos.isEmpty() && !state.isError,
             text = stringResource(R.string.the_search_result_is_empty)
         )
         ContentVisibility(state = state.contentScreen()) {

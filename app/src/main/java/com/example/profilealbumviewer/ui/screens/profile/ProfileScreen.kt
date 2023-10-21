@@ -23,6 +23,7 @@ import androidx.navigation.NavController
 import com.example.profilealbumviewer.R
 import com.example.profilealbumviewer.ui.screens.composable.ContentVisibility
 import com.example.profilealbumviewer.ui.screens.composable.Loading
+import com.example.profilealbumviewer.ui.screens.composable.NoInternet
 import com.example.profilealbumviewer.ui.screens.photos.navigateToPhotosScreen
 import com.example.profilealbumviewer.ui.theme.Background
 import com.example.profilealbumviewer.ui.theme.Black60
@@ -59,6 +60,7 @@ fun ProfileContent(
     state: UserUiState,
     listener: UserInteractionListener
 ) {
+    NoInternet(state = state.isError, listener::getData)
     Loading(state = state.isLoading && state.albums.isEmpty())
     ContentVisibility(state = state.contentScreen()) {
         Column(

@@ -19,9 +19,11 @@ import coil.request.ImageRequest
 import com.example.profilealbumviewer.R
 import com.example.profilealbumviewer.ui.screens.composable.ContentVisibility
 import com.example.profilealbumviewer.ui.screens.composable.Loading
+import com.example.profilealbumviewer.ui.screens.composable.NoInternet
 import com.example.profilealbumviewer.ui.theme.Dimens
 import com.example.profilealbumviewer.ui.theme.Primary
 import com.example.profilealbumviewer.viewmodels.viewer.PhotoViewerViewModel
+import com.example.profilealbumviewer.viewmodels.viewer.ViewerInteractionListener
 import com.example.profilealbumviewer.viewmodels.viewer.ViewerUiState
 import com.example.profilealbumviewer.viewmodels.viewer.contentScreen
 import net.engawapg.lib.zoomable.rememberZoomState
@@ -32,12 +34,13 @@ fun PhotoViewerScreen(
     viewModel: PhotoViewerViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
-    PhotoViewerContent(state)
+    PhotoViewerContent(state, viewModel)
 }
 
 @Composable
-fun PhotoViewerContent(state: ViewerUiState) {
+fun PhotoViewerContent(state: ViewerUiState, listener: ViewerInteractionListener) {
     Loading(state = state.isLoading && state.url.isEmpty())
+    NoInternet(state = state.isError, listener::getPhoto)
     ContentVisibility(state = state.contentScreen()) {
         AsyncImage(
             modifier = Modifier

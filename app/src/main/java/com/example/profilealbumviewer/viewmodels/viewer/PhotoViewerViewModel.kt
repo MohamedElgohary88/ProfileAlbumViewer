@@ -20,13 +20,13 @@ class PhotoViewerViewModel @Inject constructor(
     private val photoArgs: PhotoArgs = PhotoArgs(savedStateHandle)
 
     init {
-        getPhoto(photoArgs.photoId.toInt())
+        getPhoto()
     }
 
 
-    override fun getPhoto(photoId: Int) {
+    override fun getPhoto() {
         tryToExecute(
-            { repository.getPhoto(photoId) },
+            { repository.getPhoto(photoArgs.photoId.toInt()) },
             ::onGetPhotoSuccess,
             ::onError
         )

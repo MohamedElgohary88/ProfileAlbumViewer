@@ -43,7 +43,7 @@ fun EmptyPlaceholder(
             verticalArrangement = Arrangement.Center
         ) {
             Image(
-                painter = painterResource(id = R.drawable.empty_box),
+                painter = painterResource(id = R.drawable.search_not_found),
                 contentDescription = "",
                 contentScale = ContentScale.Crop
             )
